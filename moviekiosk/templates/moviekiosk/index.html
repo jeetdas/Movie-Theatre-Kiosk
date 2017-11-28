@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+{% load static %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Movie ticket - Intro to DBMS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  <!-- 
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FREEHTML5.CO
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+	<!-- Animate -->
+	<link rel="stylesheet" href="{% static 'indexPage/css/animate.css' %}" >
+	<!-- Icomoon -->
+	<link rel="stylesheet" href="{% static 'indexPage/css/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'indexPage/css/bootstrap.css' %}">
+
+	<link rel="stylesheet" href="{% static 'indexPage/css/style.css' %}">
+
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'indexPage/js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+	
+	<!-- END #fh5co-offcanvas -->
+	<header id="fh5co-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 text-center">
+					{% if theater_name %}
+					{% for t in theater_name %}
+					<h1 id="fh5co-logo"><a href="#">Welcome to {{ t.name }}!</a></h1>
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+	</header>
+	<!-- END #fh5co-header -->
+	<div class="container-fluid">
+		<div class="row fh5co-post-entry">
+			{% if movie_list %}
+			<ul>
+			{% for movie in movie_list %}
+				<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+					<figure>
+						<a href="{{ movie.MID }}/"><img src="{% get_static_prefix %}indexPage/images/moviePosters/{{movie.poster_title}}" alt="Image" class="img-responsive"></a>
+					</figure>
+					<span class="fh5co-meta"><a href="single.html">RATING: {{ movie.rating }}</a></span>
+					<h2 class="fh5co-article-title"><a href="single.html">{{ movie.name }}</a></h2>
+					<span class="fh5co-meta fh5co-date">Next showing at: {{ movie.price_per_ticket }}</span>
+				</article>
+			{% endfor %}
+			</ul>
+			{% else %}
+				<p>No movies are available.</p>
+			{% endif %}
+			<div class="clearfix visible-xs-block"></div>
+		</div>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="{% static 'indexPage/js/jquery.min.js' %}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static 'indexPage/js/jquery.easing.1.3.js' %}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static 'indexPage/js/bootstrap.min.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'indexPage/js/jquery.waypoints.min.js' %}"></script>
+	<!-- Main JS -->
+	<script src="{% static 'indexPage/js/main.js' %}"></script>
+
+	</body>
+</html>
+
